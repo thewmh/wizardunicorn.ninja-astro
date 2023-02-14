@@ -1,4 +1,5 @@
 ---
+import ThemeSelector from "../components/theme";
 ---
 
 <html lang="en">
@@ -9,7 +10,7 @@
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="text-blueGray-700 bg-blueGray-50 dark:text-blueGray-50 unicorn:text-purple-700 dark:bg-blueGray-700 bg-gradient-to-br unicorn:from-purple-400 unicorn:via-pink-500 unicorn:to-red-500 lg:container lg:mx-auto lg:max-w-screen-lg lg:px-10">
+		<ThemeSelector client:load />
 	</body>
 </html>
