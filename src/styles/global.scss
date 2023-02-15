@@ -1,0 +1,165 @@
+@import './syntax.scss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@variants {
+    h1, h2, h3, h4, h5, h6 {
+        @apply mt-6 mb-2 font-semibold;
+    }
+    
+    h1 {
+        @apply text-5xl;
+    }
+    
+    h2 {
+        @apply text-4xl;
+    }
+    
+    h3 {
+        @apply text-3xl;
+    }
+    
+    h4 {
+        @apply text-2xl;
+    }
+    
+    figure {
+        @apply w-11/12 mx-auto my-8 p-8;
+    }
+    
+    code {
+        @apply whitespace-pre-wrap;
+    }
+    
+    p {
+        @apply my-2;
+    }
+    
+    article {
+        @apply text-lg;
+    
+        a {
+            @apply relative no-underline bg-gradient-to-t from-current to-current bg-x-100-y-60 bg-no-repeat bg-0%-20% inline transition-background-size duration-300 bg-blue-300 px-2;
+    
+            &:hover  {
+                @apply no-underline bg-x-0-y-60 bg-100%-20%;
+            }
+        }
+
+        h2 {
+            @apply relative inline-block p-4 transform rotate-1 font-black text-blueGray-50 bg-blueGray-700;
+        }
+
+        ul {
+
+            li {
+                @apply block mb-2 mt-2;
+
+                *:not(li) {
+                    @apply inline;
+                }
+
+                &:before {
+                    content: "- ";
+                }
+
+                ul {
+                    
+                    li {
+                        @apply ml-8;
+                    }
+                }
+            }
+        }
+    }
+
+    blockquote {
+        @apply ml-4 pl-4 inline-block transform rotate-neg-1/8 border-l-4 border-current;
+    }
+
+    #la-croix-logo {
+        @apply text-base h-9 inline;
+    }
+    
+    .la-croix-logo {
+        @apply fill-current text-blueGray-700;
+    }
+    
+    .la-croix-can {
+        @apply inline-block h-28 bg-la-croix bg-12 w-16 bg-no-repeat transform;
+    
+        &:nth-of-type(2n) {
+            @apply rotate-12;
+        }
+    
+        &:nth-of-type(3n) {
+            @apply -rotate-12;
+        }
+    
+        &:nth-of-type(5n) {
+            @apply rotate-180;
+        }
+    
+        &:hover {
+            @apply transform-none;
+        }
+    }
+
+    .unicorn {
+
+        article {
+            a {
+                @apply bg-cyan-300;
+            }
+
+            h2 {
+                @apply text-cyan-300 bg-purple-700;
+            }
+        }
+
+        .la-croix-logo {
+            @apply text-purple-700;
+        }
+    }
+
+    .dark {
+
+        figure {
+            @apply bg-blueGray-900 text-lime-300;
+        }
+
+        article {
+            a {
+                @apply bg-lime-300 text-blueGray-700;
+            }
+
+            h2 {
+                @apply text-blueGray-700 bg-blueGray-50;
+            }
+        }
+
+        .la-croix-logo {
+            @apply text-blueGray-50;
+        }
+    }
+
+    .about {
+
+        h1 {
+            @apply text-5xl lg:text-8xl font-semibold;
+        }
+    }
+}
+
+@variants hover {
+
+    .unicorn {
+        nav {
+            a {
+                @apply hover:text-purple-900;
+            }
+        }
+    }
+}

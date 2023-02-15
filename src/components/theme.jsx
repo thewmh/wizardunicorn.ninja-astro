@@ -46,9 +46,10 @@ export default function ThemeSelector() {
     }, [currentTheme])
 
     return (
-        <div className="text-right">
+        <div className="text-right font-semibold">
+            theme• 
             {themes.map((theme) =>
-                <button type="submit" className={`italic font-semibold p-2 focus:ring-0 focus:outline-none hover:${theme.hover.gradient} hover:${theme.hover.background} hover:${theme.hover.text} ${currentTheme === theme.name ? `line-through` : `underline`}`}
+                <button type="submit" className={`italic p-2 focus:ring-0 focus:outline-none hover:${theme.hover.gradient} hover:${theme.hover.background} hover:${theme.hover.text} ${currentTheme === theme.name ? `line-through` : `underline`}`}
                     onClick={
                         () => { setCurrentTheme(theme.name); }
                     }
