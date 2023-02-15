@@ -36,13 +36,16 @@ const themeClasses = {
 
 export default function ThemeSelector() {
 
-    const [ currentTheme, setCurrentTheme ] = useState('wizard');
+    const [ currentTheme, setCurrentTheme ] = useState('');
 
     
     useEffect(() => {
         const root = document.getElementsByTagName('html')[0];
         root.classList = '';
+        const colorMode = window.localStorage.getItem('colorMode');
+        colorMode !== undefined ? root.classList = colorMode :
         root.classList = themeClasses[currentTheme];
+        window.localStorage.setItem('colorMode', themeClasses[currentTheme])
     }, [currentTheme])
 
     return (

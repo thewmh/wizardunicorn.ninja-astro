@@ -2,7 +2,7 @@
 import '../styles/global.scss';
 import Header from "../components/Header";
 import BlogNav from '../components/blogNav';
-const { title, pagenav } = Astro.props.frontmatter;
+const { title, pagenav } = Astro.props.frontmatter || Astro.props;
 ---
 
 <html lang="en">
@@ -16,7 +16,7 @@ const { title, pagenav } = Astro.props.frontmatter;
 	<body class="text-blueGray-700 bg-blueGray-50 dark:text-blueGray-50 unicorn:text-purple-700 dark:bg-blueGray-700 bg-gradient-to-br unicorn:from-purple-400 unicorn:via-pink-500 unicorn:to-red-500 lg:container lg:mx-auto lg:max-w-screen-lg lg:px-10">
 		<Header client:load />
 		<div>
-			<BlogNav
+			{title && <BlogNav
 				title={title}
 				pagenav={pagenav}
 			/>
@@ -24,6 +24,7 @@ const { title, pagenav } = Astro.props.frontmatter;
 				<h1 class="text-5xl lg:text-8xl font-semibold">{title}</h1>
 				<slot />
 			</article>
+			}
 		</div>
 	</body>
 </html>
