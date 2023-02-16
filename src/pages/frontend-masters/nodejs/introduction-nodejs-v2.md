@@ -91,6 +91,15 @@ A: Yeah, it's that hot new fire that addresses the shortcomings of Node and preb
 ## Basic Components
 
 ### Globals
+
+Like a browser, Node comes with some practical globals to use:
+
+`global` - similar to `window` but for Node
+`__dirname` - a `String` value that points to the directory name of the file it is used in
+`__filename` - a `String` value that points to the file name
+`process` - from env vars to what machine you're on, an `Object` that contains all the context you need about the currrent program being executed
+`exports` `module` `require` - used for creating and exposing modules in a Node app
+
 ### Modules
 ### File System
 ### Error Handling
