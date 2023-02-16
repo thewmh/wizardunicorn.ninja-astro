@@ -61,8 +61,22 @@ pagenav:
 ## Introduction
 
 ### Introduction
+
+If you know JavaScript, Node.js will be familiar, but is not 1:1 equivalent to JavaScript, Node.js is written in JavaScript.
+
+This is also a good workshop for any developer who has worked with any OS-level language.
+
 ### Installing Node.js
+
+Node.js is a runtime build on top of Chrome's V8 engine which allows apps to be developed in JavaScript outside of a web browser. If you know JS then you already know how to develop with Node.js, kinda...
+
+Here's some use cases for Node.js: API's and servers, databases, CLI's, build tools, automations, basic scripting, GPU shopping bots.
+
+Go to the Node.js website and it will automatically detect your computer / OS to install the correct version of Node.js. It is recommended to use Node Version Manager (nvm) to install Node as this tool allows you to have multiple versions of Node installed that you can switch between - especially useful if you work on a variety of projects and need to switch between different versions of Node. Once you have nvm installed, run `nvm install --lts` to get the current version of Node that is in Long Term Support.
+
 ### Executing Node
+
+
 ### Node.js Intro Q&A
 
 ## Basic Components
