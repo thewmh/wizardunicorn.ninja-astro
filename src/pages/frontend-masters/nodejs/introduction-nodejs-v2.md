@@ -76,8 +76,17 @@ Go to the Node.js website and it will automatically detect your computer / OS to
 
 ### Executing Node
 
-
+There are a number of ways you can execute Node, we'll cover a few. First up is Node REPL (Read, Evaluate, Print, Loop) which is an interactive shell that will be in the execution context of the runtime of your choice. Simply open a terminal and type `node` to fire up REPL. While you can do some things directly in the REPL, you really want to feed it a file. To exit the REPL in the terminal, press `ctrl + C` (twice?). If you are familiar with browser APIs, they are generally not available in Node. i.e. `alert('message')` will not work in Node as `alert` is a browser API. `console` does exist in Node.
 ### Node.js Intro Q&A
+
+Q: If the Chorme engine is updated to v9, what impact will that have on Node?
+A: Any feature that is not browser specific would be made available in Node.
+
+Q: What is the difference between v1 of this course and v2?
+A: v2 is using a newer version of Node.
+
+Q: Deno?
+A: Yeah, it's that hot new fire that addresses the shortcomings of Node and prebundles the most useful packages so you do not have to figure out what they are; testing, etc...
 
 ## Basic Components
 
