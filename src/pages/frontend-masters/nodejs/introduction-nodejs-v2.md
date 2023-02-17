@@ -101,6 +101,32 @@ Like a browser, Node comes with some practical globals to use:
 `exports` `module` `require` - used for creating and exposing modules in a Node app
 
 ### Modules
+
+Node uses modules to share your JS within your app. A module is reusable code that has its own context. Modules cannot interfere or pollute the global scope. Modules can be created, imported, and shared.
+
+By default, Node uses common js modules. Newer versions of Ndoe can use ES6 modules. To opt-in to ES6 module syntax, use the  `.mjs` extension instead of `.js`. This workshop will follow ES6 module syntax as it is widely supported and is the standard. Let's take a look at some modules:
+
+Common JS:
+
+```
+const action = () => {
+    console.log('hello');
+}
+
+module.exports = action
+```
+
+ES6:
+
+```
+export const action = () => {
+    console.log('hello');
+}
+```
+
+Q: If I'm using Common JS in a project, could I gradually switch to ES6 Module syntax?
+A: You can, but it has some caveats. You have to figure out the right module syntax to correctly interop between the various files you have in your project.
+
 ### File System
 ### Error Handling
 ### Errors and Async Await Q&A
