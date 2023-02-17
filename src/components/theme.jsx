@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const themes = [
     {
         name: "wizard",
+        className: "min-h-full",
         hover: {
             gradient: "black",
             background: "",
@@ -11,6 +12,7 @@ const themes = [
     },
     {
         name: "unicorn",
+        className: "min-h-full unicorn",
         hover: {
             gradient: "black",
             background: "",
@@ -19,6 +21,7 @@ const themes = [
     },
     {
         name: "ninja",
+        className: "min-h-full dark",
         hover: {
             gradient: "black",
             background: "",
@@ -26,12 +29,6 @@ const themes = [
         }
     },
 ];
-
-const themeClasses = {
-    wizard: "min-h-full",
-    unicorn: "min-h-full unicorn",
-    ninja: "min-h-full dark"
-}
 
 
 export default function ThemeSelector() {
@@ -41,11 +38,11 @@ export default function ThemeSelector() {
     
     useEffect(() => {
         const root = document.getElementsByTagName('html')[0];
-        root.classList = '';
-        const colorMode = window.localStorage.getItem('colorMode');
-        colorMode !== undefined ? root.classList = colorMode :
-        root.classList = themeClasses[currentTheme];
-        window.localStorage.setItem('colorMode', themeClasses[currentTheme])
+        // const colorMode = localStorage.getItem('colorMode');
+        // console.log('colorMode: ', )
+        // colorMode !== undefined ? root.classList = colorMode :
+        root.classList = currentTheme;
+        localStorage.setItem('colorMode', currentTheme)
     }, [currentTheme])
 
     return (
@@ -54,7 +51,7 @@ export default function ThemeSelector() {
             {themes.map((theme) =>
                 <button type="submit" className={`italic p-2 focus:ring-0 focus:outline-none hover:${theme.hover.gradient} hover:${theme.hover.background} hover:${theme.hover.text} ${currentTheme === theme.name ? `line-through` : `underline`}`}
                     onClick={
-                        () => { setCurrentTheme(theme.name); }
+                        () => { setCurrentTheme(theme.className); }
                     }
                     key={theme.name}
                     id={theme.name}
