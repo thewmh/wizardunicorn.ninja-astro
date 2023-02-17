@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@variants {
+@layer components {
     h1, h2, h3, h4, h5, h6 {
         @apply mt-6 mb-2 font-semibold;
     }

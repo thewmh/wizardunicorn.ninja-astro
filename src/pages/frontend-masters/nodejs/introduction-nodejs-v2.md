@@ -7,23 +7,23 @@ pagenav:
   - name: Introduction
     href: introduction
   - name: Installing Node.js
-    href: installing-Node-js
+    href: installing-nodejs
   - name: Executing Node
     href: executing-node
   - name: Node.js Intro Q&A
-    href: node-js-intro-q-a
+    href: nodejs-intro-qa
   - name: Globals
     href: globals
   - name: Modules
     href: modules
   - name: File System
-    href: file system
+    href: file-system
   - name: Error Handling
-    href: error handling
+    href: error-handling
   - name: Errors and Async Await Q&A
-    href: errors-async-await-q-a
+    href: errors-and-async-await-qa
   - name: Creating Local Packages & npm
-    href: creating-local-packages-npm
+    href: creating-local-packages--npm
   - name: Finding & Installing Packages
     href: finding-installing-packages
   - name: Using npm Packages
@@ -31,15 +31,15 @@ pagenav:
   - name: Running npm Scripts
     href: running-npm-scripts
   - name: Setup a CLI Script with Node.js
-    href: setup-cli-script-node-js
+    href: setup-a-cli-script-with-nodejs
   - name: Building a Reddit CLI
-    href: building-reddit-cli
+    href: building-a-reddit-cli
   - name: Creating a Low-Level Server
-    href: creating-low-level-server
+    href: creating-a-low-level-server
   - name: Testing an API with HTTPie
-    href: testing-an-api-httpie
+    href: testing-an-api-with-httpie
   - name: Create a Server API with Express
-    href: create-server-api-express
+    href: create-a-server-api-with-express
   - name: Dynamic Routes in Express
     href: dynamic-routes-in-express
   - name: Vanilla Unit Tests
@@ -50,12 +50,12 @@ pagenav:
     href: asynchronous-tests
   - name: Debugging
     href: debugging
-  - name: Deployment: Packages
+  - name: "Deployment: Packages"
     href: deployment-packages
-  - name: Deployment: Servers
+  - name: "Deployment: Servers"
     href: deployment-servers
   - name: Wrapping Up
-    href: wrapping-up
+    href: wrapping-up-1
 ---
 
 ## Introduction
