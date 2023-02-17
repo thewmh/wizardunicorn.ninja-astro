@@ -80,12 +80,15 @@ There are a number of ways you can execute Node, we'll cover a few. First up is 
 ### Node.js Intro Q&A
 
 Q: If the Chorme engine is updated to v9, what impact will that have on Node?
+
 A: Any feature that is not browser specific would be made available in Node.
 
 Q: What is the difference between v1 of this course and v2?
+
 A: v2 is using a newer version of Node.
 
 Q: Deno?
+
 A: Yeah, it's that hot new fire that addresses the shortcomings of Node and prebundles the most useful packages so you do not have to figure out what they are; testing, etc...
 
 ## Basic Components
@@ -95,9 +98,13 @@ A: Yeah, it's that hot new fire that addresses the shortcomings of Node and preb
 Like a browser, Node comes with some practical globals to use:
 
 `global` - similar to `window` but for Node
+
 `__dirname` - a `String` value that points to the directory name of the file it is used in
+
 `__filename` - a `String` value that points to the file name
+
 `process` - from env vars to what machine you're on, an `Object` that contains all the context you need about the currrent program being executed
+
 `exports` `module` `require` - used for creating and exposing modules in a Node app
 
 ### Modules
@@ -125,15 +132,121 @@ export const action = () => {
 ```
 
 Q: If I'm using Common JS in a project, could I gradually switch to ES6 Module syntax?
+
 A: You can, but it has some caveats. You have to figure out the right module syntax to correctly interop between the various files you have in your project.
 
+Here's a quick list of some of Nodes internal modules:
+
+`fs` - useful for interacting with the file system
+
+`path` - lib to assist with manipulating file paths and all their nuances
+
+`child_process` - spawn subprocesses in the background
+
+`http` - interact with OS level networking - useful for creating servers
+
 ### File System
+
+Before Node, there was not a way to access a machine's file system with JS. With Node, we have `fs` which is short for 'file system'. In Node, if you `console.log(fs)`, you can see all of the available methods. You may notice that there is a 'Sync' version of each method, non-Sync methods are asynchronous. There are many methods on the `fs module`, let's look at using the `readFile` method to... read a file:
+
+Create an HTML file `template.html`:
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <h1>{title}</h1>
+  <p>{body}</p>
+</body>
+</html>
+```
+
+Notice the 2 placeholders (denoted by `{}`) in the above HTML file. They will be interpolated when we look at the `writeFile` method. To read the file:
+
+Create a module file `index.mjs`:
+
+```
+import { readFile } from 'fs/promises'
+
+let template = await readFile(new URL('./template.html', import.meta.url), 'utf-8')
+```
+
+The `fs` module has async, sync, and promise versions of it's methods, in the above example, we are using the promise version because it has a 'cleaner' API and using async / non-blocking methods is preferred.
+
+Still in the `index.mjs` file, update it to include `writeFile`:
+
+```
+import { readFile, writeFile } from 'fs/promises'
+
+let template = await readFile(new URL('./test.html', import.meta.url), 'utf-8')
+
+const data = {
+  title: 'My new file',
+  body: 'I wrote this file to disk using node'
+}
+
+for (const [key, val] of Object.entries(data)) {
+  template = template.replace(`{${key}}`, val)
+}
+
+await writeFile(new URL('./index.html', import.meta.url), template)
+```
+
+If you run the above code, you should have an `index.html` file that is the same as the `template.html` file you created, but with the placeholders now having actual content. This is a quick example of what static analysis tools like TypeScript, Babel, Webpack, and Rollup do.
+
 ### Error Handling
+
+When an exception is thrown in Node, the current process exits with a code of `1`. This errors out and stops the program. Here's how to handle errors in Node based-on the type of code; async, promise, async callback, async await, etc...
+
+The standard pattern for dealing with errors in async operations looks like so:
+
+```
+fs.readFile(filepath, (error, result) => {
+    if (error) {
+        // error
+    } else {
+        // no error
+    }
+})
+```
+
+Callbacks accept a `(error, result)` argument signature where `error` is `null` if there is no error. For `promises`, continue to use the `.catch()` pattern. For `async/await` use `try/catch`.
+
+```
+try {
+    const result = await asyncAction()
+} catch (e) {
+    // error
+}
+```
+
+For sync errors, use the same `try/catch` from above. If nothing else works, use a catchall:
+
+```
+process.on('uncaughtException', cb) // 💥
+```
+
 ### Errors and Async Await Q&A
+
+Q: How are we able to access `process` without importing it?
+
+A: Don't be stupid. `process` is one of the global variables inside of Node. Idiot.
+
+Q: What is the difference between an error and an exception?
+
+A: The only difference is that an error can cause an exception.
 
 ## Packages
 
 ### Creating Local Packages & npm
+
+
+
 ### Finding & Installing Packages
 ### Using npm Packages
 ### Running npm Scripts
