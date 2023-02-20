@@ -269,7 +269,15 @@ NPM has several commands. Here are a few that you will use most commonly:
 Unless you don't write tests, no matter the company or the app, you will use the above three commands all the time. Any additional commands you may have will be unique to your app.
 
 ### Finding & Installing Packages
+
+Most [npm] modules are hosted on a registry somewhere, the most used of which is the NPM registry. Modules cann also be published to Github and there are many other registries. NPM allows you to point to any registry. As with most research, finding a good package requires a good search query. Once you find a package that seems relevant, take a look at the details of the package; when was it last updated? recently? a long time ago? what does its Github / repository page look like? does it appear active?
+
+In addition to finding a package that is relevant to what you are looking for, it is important that the package is also actively maintained. Keep that in mind.
+
 ### Using npm Packages
+
+
+
 ### Running npm Scripts
 
 ## CLI
