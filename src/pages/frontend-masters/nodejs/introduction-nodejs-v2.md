@@ -115,7 +115,7 @@ By default, Node uses common js modules. Newer versions of Ndoe can use ES6 modu
 
 Common JS:
 
-```
+```js
 const action = () => {
     console.log('hello');
 }
@@ -123,9 +123,10 @@ const action = () => {
 module.exports = action
 ```
 
+
 ES6:
 
-```
+```js
 export const action = () => {
     console.log('hello');
 }
@@ -151,7 +152,7 @@ Before Node, there was not a way to access a machine's file system with JS. With
 
 Create an HTML file `template.html`:
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -170,7 +171,7 @@ Notice the 2 placeholders (denoted by `{}`) in the above HTML file. They will be
 
 Create a module file `index.mjs`:
 
-```
+```js
 import { readFile } from 'fs/promises'
 
 let template = await readFile(new URL('./template.html', import.meta.url), 'utf-8')
@@ -180,7 +181,7 @@ The `fs` module has async, sync, and promise versions of it's methods, in the ab
 
 Still in the `index.mjs` file, update it to include `writeFile`:
 
-```
+```js
 import { readFile, writeFile } from 'fs/promises'
 
 let template = await readFile(new URL('./test.html', import.meta.url), 'utf-8')
@@ -205,7 +206,7 @@ When an exception is thrown in Node, the current process exits with a code of `1
 
 The standard pattern for dealing with errors in async operations looks like so:
 
-```
+```js
 fs.readFile(filepath, (error, result) => {
     if (error) {
         // error
@@ -217,7 +218,7 @@ fs.readFile(filepath, (error, result) => {
 
 Callbacks accept a `(error, result)` argument signature where `error` is `null` if there is no error. For `promises`, continue to use the `.catch()` pattern. For `async/await` use `try/catch`.
 
-```
+```js
 try {
     const result = await asyncAction()
 } catch (e) {
@@ -227,7 +228,7 @@ try {
 
 For sync errors, use the same `try/catch` from above. If nothing else works, use a catchall:
 
-```
+```js
 process.on('uncaughtException', cb) // 💥
 ```
 
@@ -245,7 +246,27 @@ A: The only difference is that an error can cause an exception.
 
 ### Creating Local Packages & npm
 
+Node has a thriving community that has produced millions of Node projects that are available to be installed and consumed by your Node application. These are called packages. A package can be comprised of several modules and other packages. Node has built-in support for these module packages. To consume a [Node] package, your app must itself be a package. To make your app a package, you need a file called `package.json`. When you installed Node, it came with something called the Node Package Manager (npm) which is a CLI. To initialize your app as a package, type `npm init` in the root directory of your project. `npm init` will initialize a new package by walking you through a series of prompts. Once finished, you'll see a `package.json` file appear in your app directory.
 
+Now your "app" is a package, and its `package.json` should have the following fields:
+
+`"name"` - the name of your package - can be anything if local, if publishing to `npm` or elsewhere, you'd have to check what names are available
+
+`"version"` - the Semantic Version Number (semver) for your package
+
+`"main"` - the main entry point for your package
+
+`"scrpts"` - object of custom scripts to be executed with `npm` CLI
+
+NPM has several commands. Here are a few that you will use most commonly:
+
+`npm install ${package-name}` - installs modules from remote registries or local sources
+
+`npm test` - runs the `test` script in your `package.json`
+
+`npm uninstall ${package-name}` - uninstalls the specified package
+
+Unless you don't write tests, no matter the company or the app, you will use the above three commands all the time. Any additional commands you may have will be unique to your app.
 
 ### Finding & Installing Packages
 ### Using npm Packages

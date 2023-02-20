@@ -1,7 +1,7 @@
 @variants {
 
-    .highlight {
-        @apply bg-blueGray-700;
+    .highlight, pre {
+        @apply bg-blueGray-700 text-gray-50 m-8 p-8;
 
         /* Comment
         Comment.Multiline
@@ -31,7 +31,7 @@
         Keyword.Declaration
         Keyword.Pseudo
         Keyword.Reserved */
-        .k, .kc, .kd, .kp, .kr { 
+        .k, .kc, .kd, .kp, .kr, .keyword { 
             @apply text-blue-300;
         }
 
@@ -58,7 +58,7 @@
         Literal.String.Char
         Name.Builtin.Pseudo
         Generic.Heading */
-        .n, .h, .p, .nb, .ni, .nl, .py, .w, .sc, .bp, .gh {
+        .n, .h, .p, .nb, .ni, .nl, .py, .w, .sc, .bp, .gh, .punctuation {
             @apply text-purple-300;
         }
 
@@ -95,7 +95,7 @@
         Literal.String.Regex
         Literal.String.Single
         Literal.String.Symbol */
-        .gi, .ld, .s, .sb, .dl, .s2, .sh, .sx, .sr, .s1, .ss {
+        .gi, .ld, .s, .sb, .dl, .s2, .sh, .sx, .sr, .s1, .ss, .string {
             color: #b5bd68;
         }
 
@@ -109,16 +109,17 @@
         /* Name.Attribute
         Name.Function
         Name.Other */
-        .na, .nf, .nx {
+        .na, .nf, .nx, .function, .operator {
             @apply text-gray-50;
         }
     }
 
     .unicorn {
 
-        .highlight {
+        .highlight, pre {
 
-            @apply bg-gradient-to-br from-purple-500 to-purple-700;
+            @apply bg-gradient-to-br from-purple-500 to-purple-700
+                text-cyan-300;
 
             .c, .cm, .cp, .c1, .cs, .gp, .sd { 
                 @apply text-lime-200;
@@ -128,7 +129,7 @@
                 color: #cc6666;
             }
 
-            .k, .kc, .kd, .kp, .kr { 
+            .k, .kc, .kd, .kp, .kr, .keyword { 
                 @apply text-pink-400;
             }
 
@@ -136,7 +137,7 @@
                 @apply text-red-400;
             }
 
-            .n, .h, .p, .nb, .ni, .nl, .py, .w, .sc, .bp, .gh {
+            .n, .h, .p, .nb, .ni, .nl, .py, .w, .sc, .bp, .gh, .punctuation {
                 @apply text-pink-200;
             }
 
@@ -144,7 +145,7 @@
                 @apply text-lime-400;
             }
 
-            .gi, .ld, .s, .sb, .dl, .s2, .sh, .sx, .sr, .s1, .ss {
+            .gi, .ld, .s, .sb, .dl, .s2, .sh, .sx, .sr, .s1, .ss, .string {
                 @apply text-lime-200;
             }
 
@@ -152,9 +153,16 @@
                 color: #f0c674;
             }
 
-            .na, .nf, .nx {
+            .na, .nf, .nx, .function, .operator {
                 @apply text-cyan-300;
             }
+        }
+    }
+
+    .dark {
+
+        .highlight, pre {
+            @apply bg-blueGray-800;
         }
     }
 }
