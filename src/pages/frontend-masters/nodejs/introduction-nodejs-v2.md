@@ -276,13 +276,18 @@ In addition to finding a package that is relevant to what you are looking for, i
 
 ### Using npm Packages
 
-
+When you are ready to use an NPM package, read the documentation for that package so you understand how to import it and use it!
 
 ### Running npm Scripts
+
+In the `package.json` file, there is a `scripts` object that contains all of your package scripts. To execute one of those scripts you would open a console / terminal and type `npm run ${script_name}`. You may commonly see `dev`, `test`, and / or `serve`, but you can add anything you want here and call it as noted.
 
 ## CLI
 
 ### Setup a CLI Script with Node.js
+
+A CLI (command line interface) is a program designed to start and complete one-off tasks. Node is a great runtime [environment] to create a CLI in that will run on any machine that has Node installed on it. Creating a CLI in Node just takes an extra step or two because they re just an ordinary Node app wrapped behind a `bin` command. We will create a CLI that opens a random Reddit post in a browser. We'll start from scratch with a new folder and make it a package with `npm init`.
+
 ### Building a Reddit CLI
 
 ## Servers
