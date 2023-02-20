@@ -286,7 +286,24 @@ In the `package.json` file, there is a `scripts` object that contains all of you
 
 ### Setup a CLI Script with Node.js
 
-A CLI (command line interface) is a program designed to start and complete one-off tasks. Node is a great runtime [environment] to create a CLI in that will run on any machine that has Node installed on it. Creating a CLI in Node just takes an extra step or two because they re just an ordinary Node app wrapped behind a `bin` command. We will create a CLI that opens a random Reddit post in a browser. We'll start from scratch with a new folder and make it a package with `npm init`.
+A CLI (command line interface) is a program designed to start and complete one-off tasks. Node is a great runtime [environment] to create a CLI in that will run on any machine that has Node installed on it. Creating a CLI in Node just takes an extra step or two because they re just an ordinary Node app wrapped behind a `bin` command. We will create a CLI that opens a random Reddit post in a browser. We'll start from scratch with a new folder and make it a package with `npm init`. In the new folder that is now an npm package, make a new file `reddit.mjs`:
+
+```js
+// reddit.mjs
+#! /usr/bin/env node
+
+console.log('hello from CLI')
+```
+
+The first line of the above code is called a hashbang. It is needed to tell the computer where the interpreter is lovated that is needed to execute the file, in our case, Node. Next, we need to tell Node what theh name of ouru CLI is so we can actually use it in out terminal. Let's add that information to our `package.json`:
+
+```json
+"bin": {
+  "reddit": "./reddit.mjs"
+}
+```
+
+While in the directory of your package, run `npm install -g` to install your CLI globally / locally on your machine. This will allow you to simply type `reddit` in your console to run the reddit CLI.
 
 ### Building a Reddit CLI
 
