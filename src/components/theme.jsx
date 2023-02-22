@@ -39,21 +39,22 @@ export default function ThemeSelector() {
     
     useEffect(() => {
         const root = document.getElementsByTagName('html')[0];
-        if (themeCookie !== undefined) {
-            root.classList = themeCookie
+        if (themeCookie || localStorage.getItem('colorMode') !== null) {
+            const themeVal = themeCookie !== null ? themeCookie : localStorage.getItem('colorMode');
+            root.classList = themeVal;
+            localStorage.setItem('colorMode', themeVal);
+            setCurrentTheme(themeVal)
         }
-        root.classList = currentTheme;
-        localStorage.setItem('colorMode', currentTheme)
-    }, [currentTheme, themeCookie])
+    }, [themeCookie, ''])
 
     return (
         <div className="text-right font-semibold">
             theme• 
             {themes.map((theme) =>
-                <button type="submit" className={`italic p-2 focus:ring-0 focus:outline-none hover:${theme.hover.gradient} hover:${theme.hover.background} hover:${theme.hover.text} ${currentTheme === theme.name ? `line-through` : `underline`}`}
+                <button type="submit" className={`italic p-2 focus:ring-0 focus:outline-none hover:${theme.hover.gradient} hover:${theme.hover.background} hover:${theme.hover.text} ${currentTheme === theme.className ? `line-through` : `underline`}`}
                     onClick={
-                        () => { 
-                            setThemeCookie(localStorage.getItem('colorMode'));
+                        () => {
+                            setThemeCookie(theme.className);
                             setCurrentTheme(theme.className);
                         }
                     }
