@@ -34,16 +34,17 @@ const themes = [
 export default function ThemeSelector() {
 
     const [ currentTheme, setCurrentTheme ] = useState('');
+    const [ themeCookie, setThemeCookie ] = useState(null);
 
     
     useEffect(() => {
         const root = document.getElementsByTagName('html')[0];
-        // const colorMode = localStorage.getItem('colorMode');
-        // console.log('colorMode: ', )
-        // colorMode !== undefined ? root.classList = colorMode :
+        if (themeCookie !== undefined) {
+            root.classList = themeCookie
+        }
         root.classList = currentTheme;
         localStorage.setItem('colorMode', currentTheme)
-    }, [currentTheme])
+    }, [currentTheme, themeCookie])
 
     return (
         <div className="text-right font-semibold">
@@ -51,7 +52,10 @@ export default function ThemeSelector() {
             {themes.map((theme) =>
                 <button type="submit" className={`italic p-2 focus:ring-0 focus:outline-none hover:${theme.hover.gradient} hover:${theme.hover.background} hover:${theme.hover.text} ${currentTheme === theme.name ? `line-through` : `underline`}`}
                     onClick={
-                        () => { setCurrentTheme(theme.className); }
+                        () => { 
+                            setThemeCookie(localStorage.getItem('colorMode'));
+                            setCurrentTheme(theme.className);
+                        }
                     }
                     key={theme.name}
                     id={theme.name}
